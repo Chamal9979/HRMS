@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="Context" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="HRMS.HuntingItems.HuntItemController">
+   <children>
+      <BorderPane prefHeight="400.0" prefWidth="600.0">
+         <top>
+            <AnchorPane prefHeight="40.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Label layoutX="239.0" layoutY="6.0" text="Hunting Items">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+         </top>
+         <left>
+            <AnchorPane prefHeight="360.0" prefWidth="601.0" BorderPane.alignment="CENTER">
+               <children>
+                  <ImageView fitHeight="91.0" fitWidth="114.0" layoutX="14.0" layoutY="73.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@6621518.jpg" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="11.0" layoutY="14.0" prefHeight="19.0" prefWidth="584.0" text="*  Kinf , tent , food , woorkey torky , stove , first aid and other bacic things required are given" textOverrun="CLIP">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="25.0" layoutY="33.0" prefHeight="19.0" prefWidth="570.0" text="to you.(This included in the package.)" textOverrun="CLIP">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="161.0" layoutY="104.0" text="No of Guns" />
+                  <TextField layoutX="253.0" layoutY="100.0" prefHeight="25.0" prefWidth="47.0" />
+                  <ImageView fitHeight="114.0" fitWidth="114.0" layoutX="16.0" layoutY="191.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@bow.jpg" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="161.0" layoutY="239.0" text="No of Bows" />
+                  <TextField layoutX="253.0" layoutY="235.0" prefHeight="25.0" prefWidth="47.0" />
+                  <Button fx:id="BackI" layoutX="416.0" layoutY="312.0" mnemonicParsing="false" onAction="#BackOnAction" prefHeight="25.0" prefWidth="50.0" text="Back" />
+                  <Button fx:id="OkI" layoutX="503.0" layoutY="312.0" mnemonicParsing="false" onAction="#OkOnAction" prefHeight="25.0" prefWidth="50.0" text="Ok" />
+               </children>
+            </AnchorPane>
+         </left>
+      </BorderPane>
+   </children>
+</AnchorPane>
