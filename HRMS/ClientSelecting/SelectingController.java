@@ -25,7 +25,7 @@ public class SelectingController {
     public AnchorPane Context;
 
     public void Back3OnAction(ActionEvent actionEvent) throws IOException {
-        setUi("Client/ClientService");
+        setUi("Login/Login");
     }
 
     public void MapOnAction(ActionEvent actionEvent) throws IOException {
@@ -47,12 +47,19 @@ public class SelectingController {
     public void ClearOnAction(ActionEvent actionEvent) throws IOException {
         setUi("ClientSelecting/Selecting");
     }
+    public void SubmitOnAction(ActionEvent actionEvent) throws IOException {
+        setUi("StaffandUser/StaffandUser");
+    }
+    public void BookingOnAction(ActionEvent actionEvent) throws IOException {
+        setUi("Booking/Booking");
+    }
 
     private void setUi(String location)throws IOException {
         Stage stage =(Stage) Context.getScene().getWindow();
         stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("../"+location+".fxml"))));
         stage.centerOnScreen();
     }
+
 
 
 }

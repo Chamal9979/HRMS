@@ -1,4 +1,4 @@
-package HRMS.Client;
+package HRMS.Booking;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -8,24 +8,20 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class ClientServiceController {
+public class BookingController {
     public AnchorPane Context;
-
-    public void EnterOnAction(ActionEvent actionEvent) throws IOException {
+    public void Back2OnAction(ActionEvent actionEvent) throws IOException {
         setUi("ClientSelecting/Selecting");
     }
 
-    public void ClearOnAction(ActionEvent actionEvent) throws IOException {
-        setUi("Client/ClientService");
+    public void SaveOnAction(ActionEvent actionEvent) throws IOException {
+        setUi("ClientSelecting/Selecting");
     }
-    public void BackOnAction(ActionEvent actionEvent) throws IOException {
-        setUi("StaffandUser/StaffandUser");
-    }
+
     private void setUi(String location)throws IOException {
         Stage stage =(Stage) Context.getScene().getWindow();
         stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("../"+location+".fxml"))));
         stage.centerOnScreen();
     }
-
 
 }

@@ -41,14 +41,15 @@
                         <Font name="System Bold" size="13.0" />
                      </font>
                   </Label>
-                  <Button fx:id="LoginB" layoutX="75.0" layoutY="289.0" mnemonicParsing="false" onAction="#LoginOnAction" prefHeight="30.0" prefWidth="184.0" style="-fx-background-color: #c09618;" text="Login" textAlignment="CENTER" />
-                  <Button fx:id="CancelB" layoutX="75.0" layoutY="335.0" mnemonicParsing="false" onAction="#ClearOnAction" prefHeight="30.0" prefWidth="184.0" style="-fx-background-color: #b66761;" text="Cancel" textAlignment="CENTER" />
+                  <Button fx:id="LoginB" layoutX="75.0" layoutY="273.0" mnemonicParsing="false" onAction="#LoginOnAction" prefHeight="22.0" prefWidth="184.0" style="-fx-background-color: #c09618;" text="Login" textAlignment="CENTER" />
                   <TextField layoutX="117.0" layoutY="170.0" prefHeight="25.0" prefWidth="180.0" promptText="user name">
                      <font>
                         <Font size="13.0" />
                      </font>
                   </TextField>
                   <TextField layoutX="117.0" layoutY="221.0" prefHeight="25.0" prefWidth="180.0" promptText="password" />
+                  <Button fx:id="SignUp" layoutX="75.0" layoutY="315.0" mnemonicParsing="false" onAction="#SignUpOnAction" prefHeight="22.0" prefWidth="184.0" style="-fx-background-color: #c09618;" text="Sign Up" textAlignment="CENTER" />
+                  <Button fx:id="Back" layoutX="75.0" layoutY="356.0" mnemonicParsing="false" onAction="#BackOnAction" prefHeight="22.0" prefWidth="184.0" style="-fx-background-color: #F55E3D;" text="Back" textAlignment="CENTER" />
                </children>
             </AnchorPane>
          </center>

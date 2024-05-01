@@ -10,7 +10,6 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane id="AnchorPane" fx:id="Context" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="HRMS.ClientSelecting.SelectingController">
    <children>
       <ImageView fitHeight="410.0" fitWidth="617.0" opacity="0.8" pickOnBounds="true" preserveRatio="true">
@@ -22,15 +21,17 @@
          <bottom>
             <AnchorPane prefHeight="202.0" prefWidth="610.0" BorderPane.alignment="CENTER">
                <children>
-                  <TableView layoutX="21.0" layoutY="11.0" prefHeight="147.0" prefWidth="567.0">
+                  <TableView layoutX="23.0" layoutY="11.0" prefHeight="147.0" prefWidth="569.0">
                     <columns>
-                      <TableColumn prefWidth="141.33330726623535" text="Map" />
-                      <TableColumn minWidth="1.999969482421875" prefWidth="134.00001525878906" text="Vehicle" />
-                        <TableColumn prefWidth="128.66671752929688" text="Items" />
-                        <TableColumn prefWidth="164.66665649414062" text="Animals" />
+                      <TableColumn prefWidth="114.66669273376465" text="Map" />
+                      <TableColumn minWidth="1.999969482421875" prefWidth="102.66668701171875" text="Vehicle" />
+                        <TableColumn prefWidth="110.66667175292969" text="Items" />
+                        <TableColumn prefWidth="125.33331298828125" text="Animals" />
+                        <TableColumn prefWidth="110.66667175292969" text="No Peoples" />
                     </columns>
                   </TableView>
-                  <Button fx:id="Clear" layoutX="544.0" layoutY="168.0" mnemonicParsing="false" onAction="#ClearOnAction" text="Clear" />
+                  <Button fx:id="Clear" layoutX="466.0" layoutY="168.0" mnemonicParsing="false" onAction="#ClearOnAction" text="Clear" />
+                  <Button fx:id="Submit" layoutX="523.0" layoutY="168.0" mnemonicParsing="false" onAction="#SubmitOnAction" text="Submit" />
                </children>
             </AnchorPane>
          </bottom>
@@ -51,58 +52,68 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button fx:id="Map" layoutX="31.0" layoutY="81.0" mnemonicParsing="false" onAction="#MapOnAction" opacity="0.9" prefHeight="83.0" prefWidth="98.0">
+                  <Button fx:id="Map" layoutX="20.0" layoutY="81.0" mnemonicParsing="false" onAction="#MapOnAction" opacity="0.9" prefHeight="75.0" prefWidth="75.0">
                      <graphic>
-                        <ImageView fitHeight="88.0" fitWidth="88.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="75.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@map.png" />
                            </image>
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button fx:id="Vehicle" layoutX="179.0" layoutY="81.0" mnemonicParsing="false" onAction="#VehicleOnAction" opacity="0.9" prefHeight="60.0" prefWidth="60.0">
+                  <Button fx:id="Vehicle" layoutX="133.0" layoutY="81.0" mnemonicParsing="false" onAction="#VehicleOnAction" opacity="0.9" prefHeight="75.0" prefWidth="75.0">
                      <graphic>
-                        <ImageView fitHeight="88.0" fitWidth="88.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="75.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@Vehicle.jpg" />
                            </image>
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button fx:id="Animal" layoutX="316.0" layoutY="81.0" mnemonicParsing="false" onAction="#AnimalOnAction" opacity="0.9" prefHeight="60.0" prefWidth="60.0" AnchorPane.rightAnchor="180.0">
+                  <Button fx:id="Animal" layoutX="243.0" layoutY="81.0" mnemonicParsing="false" onAction="#AnimalOnAction" opacity="0.9" prefHeight="75.0" prefWidth="75.0" AnchorPane.rightAnchor="265.6666666666667">
                      <graphic>
-                        <ImageView fitHeight="88.0" fitWidth="88.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="75.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@Animals.png" />
                            </image>
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button fx:id="Items" layoutX="463.0" layoutY="81.0" mnemonicParsing="false" onAction="#ItemsOnAction" opacity="0.9" prefHeight="60.0" prefWidth="60.0">
+                  <Button fx:id="Items" layoutX="365.0" layoutY="81.0" mnemonicParsing="false" onAction="#ItemsOnAction" opacity="0.9" prefHeight="60.0" prefWidth="60.0">
                      <graphic>
-                        <ImageView fitHeight="88.0" fitWidth="88.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="75.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@HuntingItems.png" />
                            </image>
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Label layoutX="49.0" layoutY="186.0" text="Hunting Maps" textFill="WHITE">
+                  <Label layoutX="32.0" layoutY="178.0" text="Hunting Maps" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="10.0" />
                      </font>
                   </Label>
-                  <Label layoutX="221.0" layoutY="187.0" text="Vehicle" textFill="WHITE">
+                  <Label layoutX="162.0" layoutY="178.0" text="Vehicle" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="10.0" />
                      </font>
                   </Label>
-                  <Label layoutX="349.0" layoutY="186.0" text="Animals" textFill="WHITE">
+                  <Label layoutX="273.0" layoutY="178.0" text="Animals" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="10.0" />
                      </font>
                   </Label>
-                  <Label layoutX="481.0" layoutY="186.0" text="Hunting Items" textFill="WHITE">
+                  <Label layoutX="377.0" layoutY="178.0" text="Hunting Items" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="10.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="Booking" layoutX="480.0" layoutY="81.0" mnemonicParsing="false" onAction="#BookingOnAction" prefHeight="82.0" prefWidth="88.0" text="Booking">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Button>
+                  <Label layoutX="492.0" layoutY="178.0" text="Hunting Items" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="10.0" />
                      </font>

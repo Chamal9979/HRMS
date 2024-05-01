@@ -22,33 +22,24 @@
                         <Image url="@deer head logo (1).png" />
                      </image>
                   </ImageView>
-                  <Button fx:id="Back1" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#Back1OnAction" prefHeight="11.0" prefWidth="26.0">
-                     <graphic>
-                        <ImageView fitHeight="17.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@back-arrow.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
                </children>
             </AnchorPane>
          </top>
          <bottom>
             <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <children>
-                  <Button fx:id="Staff" layoutX="348.0" layoutY="36.0" mnemonicParsing="false" onAction="#StaffOnAction" prefHeight="109.0" prefWidth="131.0">
+                  <Button fx:id="Staff" layoutX="337.0" layoutY="36.0" mnemonicParsing="false" onAction="#StaffOnAction" prefHeight="85.0" prefWidth="71.0">
                      <graphic>
-                        <ImageView fitHeight="120.0" fitWidth="161.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="92.0" fitWidth="83.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@StaffO.png" />
                            </image>
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button fx:id="Client" layoutX="115.0" layoutY="36.0" mnemonicParsing="false" onAction="#ClientOnAction" prefHeight="109.0" prefWidth="131.0">
+                  <Button fx:id="Client" layoutX="178.0" layoutY="36.0" mnemonicParsing="false" onAction="#ClientOnAction" prefHeight="76.0" prefWidth="0.0">
                      <graphic>
-                        <ImageView fitHeight="120.0" fitWidth="161.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="92.0" fitWidth="83.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@ClentS.png" />
                            </image>
