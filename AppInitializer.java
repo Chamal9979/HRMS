@@ -10,8 +10,15 @@ public class AppInitializer extends Application {
     public static void main(String[] args){
     launch(args);
     }
+
+    /**
+     *
+     * @param primaryStage
+     * @throws Exception
+     */
+    @Override
     public void start(Stage primaryStage) throws Exception{
-        URL resource = getClass().getResource("HRMS/Login/Login.fxml");
+        URL resource = getClass().getResource("HRMS/StaffandUser/StaffandUser.fxml");
         Parent load = FXMLLoader.load(resource);
         Scene scene = new Scene(load);
         primaryStage.setScene(scene);

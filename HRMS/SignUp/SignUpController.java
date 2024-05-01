@@ -1,4 +1,4 @@
-package HRMS.StaffandUser;
+package HRMS.SignUp;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -8,15 +8,19 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class StaffandUserController {
+public class SignUpController {
     public AnchorPane Context;
 
+    public void EnterOnAction(ActionEvent actionEvent) throws IOException {
+        setUi("Login/Login");
 
-    public void StaffOnAction(ActionEvent actionEvent) throws IOException {
-        setUi("Staff/Staff");
     }
 
-    public void ClientOnAction(ActionEvent actionEvent) throws IOException {
+    public void ClearOnAction(ActionEvent actionEvent) throws IOException {
+        setUi("SignUp/SignUp");
+    }
+
+    public void BackOnAction(ActionEvent actionEvent) throws IOException {
         setUi("Login/Login");
     }
     private void setUi(String location)throws IOException {
@@ -24,5 +28,4 @@ public class StaffandUserController {
         stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("../"+location+".fxml"))));
         stage.centerOnScreen();
     }
-
 }

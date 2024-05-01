@@ -12,11 +12,14 @@ public class LoginController {
     public AnchorPane Context;
 
     public void LoginOnAction(ActionEvent actionEvent) throws IOException{
-        setUi("StaffandUser/StaffandUser");
+        setUi("ClientSelecting/Selecting");
     }
+    public void SignUpOnAction(ActionEvent actionEvent) throws IOException {
+        setUi("SignUp/SignUp");
 
-    public void ClearOnAction(ActionEvent actionEvent) throws IOException {
-        setUi("Login/Login");
+    }
+    public void BackOnAction(ActionEvent actionEvent) throws IOException {
+        setUi("StaffandUser/StaffandUser");
     }
 
     private void setUi(String location)throws IOException{
@@ -24,5 +27,7 @@ public class LoginController {
         stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("../"+location+".fxml"))));
         stage.centerOnScreen();
     }
+
+
 
 }
