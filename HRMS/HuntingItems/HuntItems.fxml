@@ -42,14 +42,14 @@
                      </font>
                   </Label>
                   <Label layoutX="161.0" layoutY="104.0" text="No of Guns" />
-                  <TextField layoutX="253.0" layoutY="100.0" prefHeight="25.0" prefWidth="47.0" />
+                  <TextField fx:id="NoOfGuns" layoutX="253.0" layoutY="100.0" prefHeight="25.0" prefWidth="47.0" />
                   <ImageView fitHeight="114.0" fitWidth="114.0" layoutX="16.0" layoutY="191.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@bow.jpg" />
                      </image>
                   </ImageView>
                   <Label layoutX="161.0" layoutY="239.0" text="No of Bows" />
-                  <TextField layoutX="253.0" layoutY="235.0" prefHeight="25.0" prefWidth="47.0" />
+                  <TextField fx:id="NoOfBows" layoutX="253.0" layoutY="235.0" prefHeight="25.0" prefWidth="47.0" />
                   <Button fx:id="BackI" layoutX="416.0" layoutY="312.0" mnemonicParsing="false" onAction="#BackOnAction" prefHeight="25.0" prefWidth="50.0" text="Back" />
                   <Button fx:id="OkI" layoutX="503.0" layoutY="312.0" mnemonicParsing="false" onAction="#OkOnAction" prefHeight="25.0" prefWidth="50.0" text="Ok" />
                </children>
