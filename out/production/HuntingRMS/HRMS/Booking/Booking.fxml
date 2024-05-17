@@ -8,7 +8,6 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane fx:id="Context" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="HRMS.Booking.BookingController">
    <children>
       <BorderPane prefHeight="400.0" prefWidth="600.0">
@@ -16,15 +15,15 @@
             <AnchorPane prefHeight="400.0" prefWidth="600.0" BorderPane.alignment="CENTER">
                <children>
                   <Label layoutX="122.0" layoutY="130.0" text="No of Peoples" />
-                  <TextField layoutX="241.0" layoutY="126.0" prefHeight="25.0" prefWidth="45.0" />
+                  <TextField fx:id="NoOfPeople" layoutX="241.0" layoutY="126.0" prefHeight="25.0" prefWidth="45.0" />
                   <Label layoutX="147.0" layoutY="172.0" text="Date" />
-                  <DatePicker layoutX="241.0" layoutY="168.0" />
+                  <DatePicker fx:id="Date" layoutX="241.0" layoutY="168.0" onAction="#DateOnAction" />
                   <Label layoutX="244.0" layoutY="14.0" text="BOOKING">
                      <font>
                         <Font name="System Bold" size="24.0" />
                      </font>
                   </Label>
-                  <Button fx:id="Back2" layoutX="438.0" layoutY="347.0" mnemonicParsing="false" onAction="#Back2OnAction" text="Back" />
+                  <Button fx:id="Back4" layoutX="438.0" layoutY="347.0" mnemonicParsing="false" onAction="#Back2OnAction" text="Back" />
                   <Button fx:id="Save" layoutX="513.0" layoutY="347.0" mnemonicParsing="false" onAction="#SaveOnAction" text="Save" />
                </children>
             </AnchorPane>

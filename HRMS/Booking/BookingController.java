@@ -1,12 +1,19 @@
 package HRMS.Booking;
 
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import javafx.scene.control.Button;
+import javafx.scene.control.DatePicker;
+import javafx.scene.control.TextField;
+
 
 import java.io.IOException;
+
+
 
 public class BookingController {
     public AnchorPane Context;
@@ -23,5 +30,11 @@ public class BookingController {
         stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("../"+location+".fxml"))));
         stage.centerOnScreen();
     }
+
+    @FXML
+    void DateOnAction(ActionEvent event) {
+
+    }
+
 
 }
