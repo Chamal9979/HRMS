@@ -21,17 +21,18 @@
          <bottom>
             <AnchorPane prefHeight="202.0" prefWidth="610.0" BorderPane.alignment="CENTER">
                <children>
-                  <TableView layoutX="23.0" layoutY="11.0" prefHeight="147.0" prefWidth="569.0">
+                  <TableView fx:id="tableView" layoutX="21.0" layoutY="14.0" prefHeight="80.0" prefWidth="567.0">
                     <columns>
-                      <TableColumn fx:id="AnimalT" prefWidth="114.66669273376465" text="Map" />
-                      <TableColumn fx:id="VehicleT" minWidth="1.999969482421875" prefWidth="102.66668701171875" text="Vehicle" />
-                        <TableColumn fx:id="ItemsT" prefWidth="110.66667175292969" text="Items" />
-                        <TableColumn fx:id="AnimalsT" prefWidth="125.33331298828125" text="Animals" />
-                        <TableColumn fx:id="NoPeople" prefWidth="110.66667175292969" text="No Of Peoples" />
+                      <TableColumn fx:id="UsernameT" prefWidth="112.79998779296875" text="Username" />
+                      <TableColumn fx:id="VehicleT" minWidth="1.999969482421875" prefWidth="105.60003662109375" text="Vehicle Type" />
+                        <TableColumn fx:id="ItemsT" prefWidth="110.66667175292969" text="Item Type" />
+                        <TableColumn fx:id="AnimalsT" prefWidth="125.33331298828125" text="Animal Type" />
+                        <TableColumn fx:id="MapT" prefWidth="111.20000000000005" text="Map" />
                     </columns>
                   </TableView>
-                  <Button fx:id="Clear" layoutX="466.0" layoutY="168.0" mnemonicParsing="false" onAction="#ClearOnAction" text="Clear" />
-                  <Button fx:id="Submit" layoutX="523.0" layoutY="168.0" mnemonicParsing="false" onAction="#SubmitOnAction" text="Submit" />
+                  <Button fx:id="Clear" layoutX="467.0" layoutY="142.0" mnemonicParsing="false" onAction="#ClearOnAction" text="Clear" />
+                  <Button fx:id="Submit" layoutX="534.0" layoutY="142.0" mnemonicParsing="false" onAction="#SubmitOnAction" text="Submit" />
+                  <Label layoutX="21.0" layoutY="114.0" prefHeight="18.0" prefWidth="245.0" text="Choose one item per package" textFill="WHITE" />
                </children>
             </AnchorPane>
          </bottom>
