@@ -1,40 +1,87 @@
 package HRMS.Booking;
 
+import HRMS.dbconnect;
+import HRMS.ClientSelecting.SelectingController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import javafx.scene.control.Button;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.TextField;
-
 
 import java.io.IOException;
-
-
+import java.net.URL;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.sql.Timestamp;
 
 public class BookingController {
-    public AnchorPane Context;
-    public void Back2OnAction(ActionEvent actionEvent) throws IOException {
-        setUi("ClientSelecting/Selecting");
-    }
-
-    public void SaveOnAction(ActionEvent actionEvent) throws IOException {
-        setUi("ClientSelecting/Selecting");
-    }
-
-    private void setUi(String location)throws IOException {
-        Stage stage =(Stage) Context.getScene().getWindow();
-        stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("../"+location+".fxml"))));
-        stage.centerOnScreen();
-    }
 
     @FXML
-    void DateOnAction(ActionEvent event) {
+    private TextField usernameB;
 
+    @FXML
+    private TextField noOfPeopleB;
+
+    @FXML
+    private AnchorPane Context;
+
+    @FXML
+    private void saveOnAction(ActionEvent event) {
+        String username = usernameB.getText();
+        String noOfPeople = noOfPeopleB.getText();
+
+        if (!username.isEmpty() && !noOfPeople.isEmpty()) {
+            if (insertBooking(username, Integer.parseInt(noOfPeople))) {
+                try {
+                    setUi("/HRMS/ClientSelecting/Selecting.fxml", username);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            } else {
+                System.out.println("Failed to insert booking into database!");
+                // Handle failure to insert if needed
+            }
+        } else {
+            System.out.println("Username or Number of People is empty!");
+            // Handle empty fields if needed
+        }
     }
 
+    private boolean insertBooking(String username, int noOfPeople) {
+        String insertQuery = "INSERT INTO booking (username, no_of_people, booking_date) VALUES (?, ?, ?)";
+        try (Connection connection = new dbconnect().getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(insertQuery)) {
 
+            preparedStatement.setString(1, username);
+            preparedStatement.setInt(2, noOfPeople);
+            preparedStatement.setTimestamp(3, new Timestamp(System.currentTimeMillis()));
+
+            int rowsAffected = preparedStatement.executeUpdate();
+            return rowsAffected > 0; // Return true if insertion was successful
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    private void setUi(String location, String username) throws IOException {
+        URL fxmlLocation = getClass().getResource(location);
+        if (fxmlLocation == null) {
+            throw new IOException("FXML file not found at: " + location);
+        }
+
+        System.out.println("Loading FXML from: " + fxmlLocation);
+        FXMLLoader loader = new FXMLLoader(fxmlLocation);
+        AnchorPane root = loader.load();
+        SelectingController controller = loader.getController();
+        controller.setUsername(username);
+
+        Stage stage = (Stage) Context.getScene().getWindow();
+        stage.setScene(new Scene(root));
+        stage.centerOnScreen();
+    }
 }
