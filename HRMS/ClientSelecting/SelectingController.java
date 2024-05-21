@@ -93,7 +93,8 @@ public class SelectingController implements Initializable {
 
 
     public void setUsername(String username) {
-        this.username = username;
+       this.username = username;
+
         addUserRow();
     }
 
@@ -156,7 +157,7 @@ public class SelectingController implements Initializable {
     // Update methods to add to permanentData
     public void updateSelectedAnimals(List<String> selectedAnimals) {
         if (!selectedAnimals.isEmpty()) {
-            selectedAnimal = selectedAnimals.get(0); // Only one animal should be selected at a time
+            selectedAnimal = selectedAnimals.get(0);
             updateData();
         }
     }
@@ -202,7 +203,7 @@ public class SelectingController implements Initializable {
             }
         }
 
-        // If user doesn't exist in permanentData, add a new entry
+
         permanentData.add(new UserSelection(username, selectedAnimal, selectedMap, selectedItem, selectedVehicle));
         tableView.refresh();
     }

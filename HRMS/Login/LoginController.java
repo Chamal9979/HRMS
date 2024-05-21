@@ -59,13 +59,13 @@ public class LoginController {
         String password = Pass.getText();
 
         try (Connection connectdb = new dbconnect().getConnection()) {
-            // Check if login table exists, if not, create it
+
             String createTableQuery = "CREATE TABLE IF NOT EXISTS login (id INT PRIMARY KEY AUTO_INCREMENT, username VARCHAR(255), password VARCHAR(255))";
             try (PreparedStatement createTableStmt = connectdb.prepareStatement(createTableQuery)) {
                 createTableStmt.executeUpdate();
             }
 
-            // Insert default admin user if it doesn't exist
+
             String checkAdminQuery = "SELECT COUNT(*) FROM login WHERE username = 'admin'";
             try (PreparedStatement checkAdminStmt = connectdb.prepareStatement(checkAdminQuery)) {
                 try (ResultSet rs = checkAdminStmt.executeQuery()) {
@@ -88,7 +88,7 @@ public class LoginController {
                     if (rs.next()) {
                         // Successful login
                         System.out.println("Login Successful");
-                        // Proceed to load new scene
+
                         setUi("ClientSelecting/Selecting");
                     } else {
                         // Failed login

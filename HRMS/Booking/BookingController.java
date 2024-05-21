@@ -29,7 +29,7 @@ public class BookingController {
     private AnchorPane Context;
 
     @FXML
-    private void saveOnAction(ActionEvent event) {
+    private void okOnAction(ActionEvent event) {
         String username = usernameB.getText();
         String noOfPeople = noOfPeopleB.getText();
 
@@ -42,11 +42,11 @@ public class BookingController {
                 }
             } else {
                 System.out.println("Failed to insert booking into database!");
-                // Handle failure to insert if needed
+
             }
         } else {
             System.out.println("Username or Number of People is empty!");
-            // Handle empty fields if needed
+
         }
     }
 
@@ -60,7 +60,7 @@ public class BookingController {
             preparedStatement.setTimestamp(3, new Timestamp(System.currentTimeMillis()));
 
             int rowsAffected = preparedStatement.executeUpdate();
-            return rowsAffected > 0; // Return true if insertion was successful
+            return rowsAffected > 0;
 
         } catch (SQLException e) {
             e.printStackTrace();
