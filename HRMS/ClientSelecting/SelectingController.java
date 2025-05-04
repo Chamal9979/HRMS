@@ -1,19 +1,25 @@
 package HRMS.ClientSelecting;
 
+import HRMS.Animal.AnimalController;
+import HRMS.HuntingItems.HuntItemController;
+import HRMS.MapSelecting.MapSelectingController;
+import HRMS.Vehicle.VehicleController;
 import HRMS.dbconnect;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
-import javafx.fxml.FXML;
 
 import java.io.IOException;
 import java.net.URL;
@@ -69,9 +75,7 @@ public class SelectingController implements Initializable {
 
     public AnchorPane Context;
 
-
     private static ObservableList<UserSelection> permanentData = FXCollections.observableArrayList();
-
 
     private String username = "";
     private String selectedAnimal = "";
@@ -87,47 +91,47 @@ public class SelectingController implements Initializable {
         ItemsT.setCellValueFactory(new PropertyValueFactory<>("itemType"));
         VehicleT.setCellValueFactory(new PropertyValueFactory<>("vehicleType"));
 
-
         tableView.setItems(permanentData);
     }
 
-
     public void setUsername(String username) {
-       this.username = username;
-
+        this.username = username;
         addUserRow();
     }
 
     private void addUserRow() {
         if (!username.isEmpty()) {
+            for (UserSelection user : permanentData) {
+                if (user.getUsername().equals(username)) {
+                    return; // Row already exists, no need to add a new one
+                }
+            }
             permanentData.add(new UserSelection(username, "", "", "", ""));
             tableView.refresh();
         }
     }
-
-
 
     public void Back3OnAction(ActionEvent actionEvent) throws IOException {
         setUi("Login/Login");
     }
 
     public void MapOnAction(ActionEvent actionEvent) throws IOException {
-        setUi("MapSelecting/MapSelecting");
+        openSelectionDialog("../MapSelecting/MapSelecting.fxml", "MapSelectingController");
     }
 
     public void VehicleOnAction(ActionEvent actionEvent) throws IOException {
-        setUi("Vehicle/Vehicle");
+        openSelectionDialog("../Vehicle/Vehicle.fxml", "VehicleController");
     }
 
     public void AnimalOnAction(ActionEvent actionEvent) throws IOException {
-        setUi("Animal/Animal");
+        openSelectionDialog("../Animal/Animal.fxml", "AnimalController");
     }
 
     public void ItemsOnAction(ActionEvent actionEvent) throws IOException {
-        setUi("HuntingItems/HuntItems");
+        openSelectionDialog("../HuntingItems/HuntItems.fxml", "HuntItemController");
     }
 
-    public void ClearOnAction(ActionEvent actionEvent) throws IOException {
+    public void ClearOnAction(ActionEvent actionEvent) {
         permanentData.clear();
         tableView.getItems().clear();
     }
@@ -135,12 +139,10 @@ public class SelectingController implements Initializable {
     public void SubmitOnAction(ActionEvent actionEvent) throws IOException {
         if (insertData()) {
             System.out.println("Data inserted successfully!");
-
             permanentData.clear();
             tableView.getItems().clear();
         } else {
             System.out.println("Failed to insert data!");
-
         }
     }
 
@@ -154,7 +156,28 @@ public class SelectingController implements Initializable {
         stage.centerOnScreen();
     }
 
-    // Update methods to add to permanentData
+    private void openSelectionDialog(String fxmlPath, String controllerName) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
+        Parent root = loader.load();
+
+        Object controller = loader.getController();
+        if (controller instanceof AnimalController) {
+            ((AnimalController) controller).setSelectingController(this);
+        } else if (controller instanceof VehicleController) {
+            ((VehicleController) controller).setSelectingController(this);
+        } else if (controller instanceof HuntItemController) {
+            ((HuntItemController) controller).setSelectingController(this);
+        } else if (controller instanceof MapSelectingController) {
+            ((MapSelectingController) controller).setSelectingController(this);
+        }
+
+        Stage dialogStage = new Stage();
+        dialogStage.initModality(Modality.WINDOW_MODAL);
+        dialogStage.initOwner(Context.getScene().getWindow());
+        dialogStage.setScene(new Scene(root));
+        dialogStage.showAndWait();
+    }
+
     public void updateSelectedAnimals(List<String> selectedAnimals) {
         if (!selectedAnimals.isEmpty()) {
             selectedAnimal = selectedAnimals.get(0);
@@ -163,22 +186,22 @@ public class SelectingController implements Initializable {
     }
 
     public void updateSelectedMaps(List<String> selectedMaps) {
-        for (String mapType : selectedMaps) {
-            selectedMap = mapType;
+        if (!selectedMaps.isEmpty()) {
+            selectedMap = selectedMaps.get(0);
             updateData();
         }
     }
 
     public void updateSelectedItems(List<String> selectedItems) {
-        for (String itemType : selectedItems) {
-            selectedItem = itemType;
+        if (!selectedItems.isEmpty()) {
+            selectedItem = selectedItems.get(0);
             updateData();
         }
     }
 
     public void updateSelectedVehicles(List<String> selectedVehicles) {
-        for (String vehicleType : selectedVehicles) {
-            selectedVehicle = vehicleType;
+        if (!selectedVehicles.isEmpty()) {
+            selectedVehicle = selectedVehicles.get(0);
             updateData();
         }
     }
@@ -186,24 +209,14 @@ public class SelectingController implements Initializable {
     private void updateData() {
         for (UserSelection userSelection : permanentData) {
             if (userSelection.getUsername().equals(username)) {
-                if (!selectedAnimal.isEmpty()) {
-                    userSelection.setAnimalType(selectedAnimal);
-                }
-                if (!selectedMap.isEmpty()) {
-                    userSelection.setMapType(selectedMap);
-                }
-                if (!selectedItem.isEmpty()) {
-                    userSelection.setItemType(selectedItem);
-                }
-                if (!selectedVehicle.isEmpty()) {
-                    userSelection.setVehicleType(selectedVehicle);
-                }
+                if (!selectedAnimal.isEmpty()) userSelection.setAnimalType(selectedAnimal);
+                if (!selectedMap.isEmpty()) userSelection.setMapType(selectedMap);
+                if (!selectedItem.isEmpty()) userSelection.setItemType(selectedItem);
+                if (!selectedVehicle.isEmpty()) userSelection.setVehicleType(selectedVehicle);
                 tableView.refresh();
                 return;
             }
         }
-
-
         permanentData.add(new UserSelection(username, selectedAnimal, selectedMap, selectedItem, selectedVehicle));
         tableView.refresh();
     }
@@ -223,62 +236,30 @@ public class SelectingController implements Initializable {
             this.vehicleType = vehicleType;
         }
 
-        public String getUsername() {
-            return username;
-        }
-
-        public void setUsername(String username) {
-            this.username = username;
-        }
-
-        public String getAnimalType() {
-            return animalType;
-        }
-
-        public void setAnimalType(String animalType) {
-            this.animalType = animalType;
-        }
-
-        public String getMapType() {
-            return mapType;
-        }
-
-        public void setMapType(String mapType) {
-            this.mapType = mapType;
-        }
-
-        public String getItemType() {
-            return itemType;
-        }
-
-        public void setItemType(String itemType) {
-            this.itemType = itemType;
-        }
-
-        public String getVehicleType() {
-            return vehicleType;
-        }
-
-        public void setVehicleType(String vehicleType) {
-            this.vehicleType = vehicleType;
-        }
+        public String getUsername() { return username; }
+        public void setUsername(String username) { this.username = username; }
+        public String getAnimalType() { return animalType; }
+        public void setAnimalType(String animalType) { this.animalType = animalType; }
+        public String getMapType() { return mapType; }
+        public void setMapType(String mapType) { this.mapType = mapType; }
+        public String getItemType() { return itemType; }
+        public void setItemType(String itemType) { this.itemType = itemType; }
+        public String getVehicleType() { return vehicleType; }
+        public void setVehicleType(String vehicleType) { this.vehicleType = vehicleType; }
     }
 
     private boolean insertData() {
         try (Connection connectdb = new dbconnect().getConnection()) {
-            // Check if orderdetails table exists, if not, create it
-            String createTableQuery = "CREATE TABLE IF NOT EXISTS orderdetails (\n" +
-                    "    id INT AUTO_INCREMENT PRIMARY KEY,\n" +
-                    "    username VARCHAR(255),\n" +
-                    "    vehicle_type VARCHAR(255),\n" +
-                    "    item_type VARCHAR(255),\n" +
-                    "    animal_type VARCHAR(255),\n" +
-                    "    map_type VARCHAR(255)\n" +
-                    ")";
+            String createTableQuery = "CREATE TABLE IF NOT EXISTS orderdetails (" +
+                    "id INT AUTO_INCREMENT PRIMARY KEY, " +
+                    "username VARCHAR(255), " +
+                    "vehicle_type VARCHAR(255), " +
+                    "item_type VARCHAR(255), " +
+                    "animal_type VARCHAR(255), " +
+                    "map_type VARCHAR(255))";
             try (PreparedStatement createTableStmt = connectdb.prepareStatement(createTableQuery)) {
                 createTableStmt.executeUpdate();
             }
-
 
             String insertDataQuery = "INSERT INTO orderdetails (username, vehicle_type, item_type, animal_type, map_type) VALUES (?, ?, ?, ?, ?)";
             try (PreparedStatement insertStmt = connectdb.prepareStatement(insertDataQuery)) {
@@ -288,10 +269,8 @@ public class SelectingController implements Initializable {
                     insertStmt.setString(3, userSelection.getItemType());
                     insertStmt.setString(4, userSelection.getAnimalType());
                     insertStmt.setString(5, userSelection.getMapType());
-
                     insertStmt.addBatch();
                 }
-
                 int[] rowsAffected = insertStmt.executeBatch();
                 return rowsAffected.length > 0;
             }

@@ -20,7 +20,7 @@ public class dbconnect {
         try {
 
             Class.forName("com.mysql.cj.jdbc.Driver");
-            dblink = DriverManager.getConnection("jdbc:mysql://localhost:3306/huntingdbms", "root", "mysqlpwd");
+            dblink = DriverManager.getConnection("jdbc:mysql://localhost:3306/huntingdbms", "root", "");
             System.out.println("database connected successfully........");
         } catch (Exception e) {
             e.printStackTrace();

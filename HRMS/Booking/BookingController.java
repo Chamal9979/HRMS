@@ -1,7 +1,7 @@
 package HRMS.Booking;
 
-import HRMS.dbconnect;
 import HRMS.ClientSelecting.SelectingController;
+import HRMS.dbconnect;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -42,11 +42,9 @@ public class BookingController {
                 }
             } else {
                 System.out.println("Failed to insert booking into database!");
-
             }
         } else {
             System.out.println("Username or Number of People is empty!");
-
         }
     }
 

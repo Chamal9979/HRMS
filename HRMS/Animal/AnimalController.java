@@ -2,15 +2,12 @@ package HRMS.Animal;
 
 import HRMS.ClientSelecting.SelectingController;
 import javafx.event.ActionEvent;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
-import javafx.scene.layout.AnchorPane;
-import javafx.stage.Stage;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -56,12 +53,19 @@ public class AnimalController {
 
     public AnchorPane Context;
 
-    public void BackOnAction(ActionEvent actionEvent) throws IOException {
-        setUi("ClientSelecting/Selecting");
+    private SelectingController selectingController;
+
+    public void setSelectingController(SelectingController controller) {
+        this.selectingController = controller;
     }
 
-    public void OkOnAction(ActionEvent actionEvent) throws IOException {
-        selectedAnimals.clear(); // Clear previous selections
+    public void BackOnAction(ActionEvent actionEvent) {
+        Stage stage = (Stage) Context.getScene().getWindow();
+        stage.close();
+    }
+
+    public void OkOnAction(ActionEvent actionEvent) {
+        selectedAnimals.clear();
         if (A1.isSelected()) selectedAnimals.add("A1");
         if (A2.isSelected()) selectedAnimals.add("A2");
         if (A3.isSelected()) selectedAnimals.add("A3");
@@ -73,19 +77,11 @@ public class AnimalController {
         if (A9.isSelected()) selectedAnimals.add("A9");
         if (A10.isSelected()) selectedAnimals.add("A10");
 
-        // Navigate back to SelectingController
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../ClientSelecting/Selecting.fxml"));
-        Stage stage = (Stage) Context.getScene().getWindow();
-        stage.setScene(new Scene(loader.load()));
-        SelectingController selectingController = loader.getController();
-        selectingController.updateSelectedAnimals(selectedAnimals);
+        if (selectingController != null) {
+            selectingController.updateSelectedAnimals(selectedAnimals);
+        }
 
-        stage.centerOnScreen();
-    }
-
-    private void setUi(String location) throws IOException {
         Stage stage = (Stage) Context.getScene().getWindow();
-        stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("../" + location + ".fxml"))));
-        stage.centerOnScreen();
+        stage.close();
     }
 }
